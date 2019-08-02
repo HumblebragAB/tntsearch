@@ -81,6 +81,7 @@ class TNTSearch
         }
         $this->index = new PDO('sqlite:'.$pathToIndex);
         $this->index->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->index->setAttribute(PDO::ATTR_TIMEOUT, 30);
         $this->setStemmer();
         $this->setTokenizer();
     }
