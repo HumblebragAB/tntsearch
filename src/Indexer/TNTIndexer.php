@@ -181,6 +181,7 @@ class TNTIndexer
         $this->index = new PDO('sqlite:'.$this->config['storage'].$indexName);
         $this->index->setAttribute(PDO::ATTR_TIMEOUT, 30);
         $this->index->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->index->query('SET LOCK MODE TO WAIT 30');
 
         $this->index->exec("CREATE TABLE IF NOT EXISTS wordlist (
                     id INTEGER PRIMARY KEY,
